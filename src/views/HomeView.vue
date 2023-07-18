@@ -6,20 +6,19 @@
 
       <div class="row mt-4">
         <div class="col">
-          <h2>Best <strong> FoodsView </strong></h2>
+          <h2>Best <strong> Foods</strong></h2>
         </div>
-        <router-link to="/FoodsView" class="btn btn-successs float-right"
-          ><b-icon-eye></b-icon-eye>Lihat Semua
-        </router-link>
+        <div class="col"></div>
+        <router-link to="/FoodsView" class="btn btn-successs float-right"><b-icon-eye></b-icon-eye>Lihat Semua</router-link>
       </div>
     </div>
 
     <div class="row mb-3">
-      <div class="col-md-3 mt-4">
-        <CardProductWa />
+      <div class="col-md-3 mt-4" v-for="product in products" :key="product.id">
+        <CardProductWa :product="product"/>
       </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -30,11 +29,11 @@ import CardProductWa from "@/components/CardProductWa.vue";
 import axios from "axios";
 
 export default {
-  name: "HomeView",
+  name: "HomeView", 
   components: {
     NavbarWa,
     HeroWa,
-    CardProductWa,
+    CardProductWa
   },
   data() {
     return {
@@ -43,20 +42,15 @@ export default {
   },
   methods: {
     setProduct(data) {
-      this.product = data;
+      this.products = data;
     },
   },
+
   mounted() {
     axios
-      .get("https://localhost:3000/best-products")
-      .then(function (response) {
-        // handle success
-        console.log("Berhasil : ", response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log("Gagal :", error );
-      })
+      .get("http://localhost:3000/best-products")
+      .then((response) => this.setProduct(response.data))
+      .catch((error) => console.log(error));
   },
 };
 </script>

@@ -8,7 +8,6 @@
         Harga : Rp. {{ product.harga }}
       </p>
       <a href="#" class="btn btn-success"><b-icon-cart></b-icon-cart>Pesan</a>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
   </div>

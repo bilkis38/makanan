@@ -38,7 +38,7 @@
           <h4>
             Harga : <strong>Rp. {{ product.harga }}</strong>
           </h4>
-          <from class="mt-4">
+          <form class="mt-4">
             <div class="form-group">
               <label for="jumlah_pemesanan">Jumlah Pesan</label>
               <input type="number" class="form-control" />
@@ -53,8 +53,8 @@
 
             <button type="submit" class="btn btn-success">
               <b-icon-cart></b-icon-cart>Pesan
-            </button>
-          </from>
+           </button> 
+          </form>
         </div>
       </div>
     </div>
